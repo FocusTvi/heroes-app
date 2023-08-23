@@ -1,0 +1,64 @@
+<h1>
+
+  <small>Superhero
+  </small>
+</h1>
+
+<mat-divider class="mb-2"></mat-divider>
+
+<form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit">
+  <div class="md:col-6 sm:col-12">
+    <mat-card>
+      <mat-card-content>
+        <div class="grid">
+          <mat-form-field class="col-6 sm:col-12">
+            <mat-label>Super héroe:</mat-label>
+            <input matInput type="text" required formControlName="superhero">
+          </mat-form-field>
+
+          <mat-form-field class="md:col-6 sm:col-12">
+            <mat-label>Alter ego:</mat-label>
+            <input matInput type="text" required formControlName="alter_ego">
+          </mat-form-field>
+
+          <mat-form-field class="md:col-12 sm:col-12">
+            <mat-label>Primera aparicion:</mat-label>
+            <input matInput type="text" required formControlName="first_appearance">
+          </mat-form-field>
+
+          <mat-form-field class="md:col-12 sm:col-12">
+            <mat-label>Creador:</mat-label>
+            <mat-select required formControlName="publisher">
+              <mat-option *ngFor="let pub of publishers" [value]="pub.id">{{pub.desc}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field class="md:col-12 sm:col-12">
+            <mat-label>Image:</mat-label>
+            <input matInput type="text" required formControlName="alt_img">
+          </mat-form-field>
+
+        </div>
+
+        <div class="flex justify-content-evenly">
+          <button mat-flat-button color="warn" (click)="onDeleteHero()" *ngIf="currentHero.id">Borrar</button>
+          <button mat-flat-button color="primary" (click)="onSubmit()">
+            <mat-icon>save</mat-icon>
+            Save
+          </button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+  <div class="md:col-6 sm:col-12">
+    <mat-card class="mx-5">
+      <img [src]="currentHero | heroImage" mat-card-image alt="Imagen del hero">
+    </mat-card>
+  </div>
+
+
+</form>

@@ -1,0 +1,7 @@
+<h2 mat-dialog-title>Delete the hero?</h2>
+<mat-dialog-content>This will delete the currently hero and cannot be undone.</mat-dialog-content>
+<mat-dialog-actions class="justify-content-evenly">
+  <button mat-button mat-dialog-close color="primary">No, thanks</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button color="warn" [mat-dialog-close]="true">Delete</button>
+</mat-dialog-actions>
